@@ -1,103 +1,56 @@
-import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
-export default function Home() {
+export default function page() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main className="w-screen h-screen px-36 py-28">
+      <div className="flex flex-row w-full h-full">
+        <div className="w-full md:w-4/6 flex-shrink-0 flex flex-col justify-between">
+          <div className="flex flex-col gap-6">
+            <h2 className="uppercase tracking-[0.35em] text-gray-600 font-light text-lg">Turning ideas into digital solutions</h2>
+            <h1 className="text-7xl tracking-tight font-extralight text-primary w-full">
+              Delivering software <br />& AI solutions
+            </h1>
+          </div>
+          <h3 className="text-gray-600 font-light text-xl">
+            Have an idea but not sure how to make it happen? We are here
+            <br />
+            to bring your project to life. Leave your details—We will call you
+            <br /> within 24 hours.
+          </h3>
+          <Button className="w-48 h-16">
+            <span className="uppercase tracking-[0.35em] text-white font-light text-sm">contact us</span>
+          </Button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+        <div className="w-2/6 flex-shrink-0 flex flex-col justify-between">
+          <h2 className="text-2xl font-light tracking-wide">Typical Services</h2>
+          <hr className="border-zinc-200" />
+          <Services
+            title="Web and Mobile App Creation"
+            description="Elegant, responsive applications built with modern frameworks and minimalist design principles."
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+          <hr className="border-zinc-200" />
+          <Services
+            title="AI Implementation"
+            description="Agentic AI, RAG, fine-tuning and NLP based solutions tailored to enhance your business capabilities."
           />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          <hr className="border-zinc-200" />
+          <Services title="MVP Creation" description="Rapid development of minimum viable products to validate your ideas and accelerate market entry." />
+        </div>
+      </div>
+    </main>
+  );
+}
+
+interface ServicesProps {
+  title: string;
+  description: string;
+}
+
+function Services({ title, description }: ServicesProps) {
+  return (
+    <div className="flex flex-col gap-4">
+      <h2 className="text-xl font-light">{title}</h2>
+      <p className="font-light text-gray-600">{description}</p>
     </div>
   );
 }
